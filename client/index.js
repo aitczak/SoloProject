@@ -3,6 +3,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 //import app - main react component
 import App from "./components/App.jsx"
+import './styles.css'
+
 
 //import styles from css or scss
 

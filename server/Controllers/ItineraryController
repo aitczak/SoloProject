@@ -1,0 +1,27 @@
+//require model
+const db = require('./Models/Models.js')
+
+const ItineraryController = {};
+
+ItineraryController.createNew = async (req,res,next) =>{
+    //destructure req.body = all the properties for new itinerary {}
+    const {Title, Destination, StartDate, EndDate, Activities} = req.body;
+    try {
+        db.create
+    }
+}
+
+ItineraryController.getAll = async (req, res, next) =>{
+    //get array of objects itineraries 
+}
+
+ItineraryController.updateOne= async (req,res,next)=>{
+    //updates one and returns it on res.locals.updatedTrip
+}
+
+
+ItineraryController.deleteOne = async (req, res, next) => {
+  //delete, dont return anything
+};
+
+module.exports = ItineraryController

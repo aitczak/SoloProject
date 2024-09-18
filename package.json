@@ -13,8 +13,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
     "express": "^4.21.0",
+    "fetch": "^1.1.0",
+    "mongodb": "^6.9.0",
     "mongoose": "^8.6.3",
+    "node": "^22.9.0",
+    "pg": "^8.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -23,7 +28,10 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
+    "sass-loader": "^16.0.1",
+    "style-loader": "^4.0.0",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"

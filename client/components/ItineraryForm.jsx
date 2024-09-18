@@ -3,15 +3,17 @@ import React, {useState} from "react";
 //displays form to fill out, create new 
 
 //addNewTrip from props from main being passed down 
-const ItineraryForm = ({addNewTrip}) =>{
+const ItineraryForm = ({addNewTrip, addCount }) =>{
     const [title, setTitle] = useState('');
     const [destination, setDestination] = useState('');
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [activities, setActivities] = useState("");
+   
 
     const handleFormSubmit= (e)=>{
         e.preventDefault();
+        addCount();
         addNewTrip({title, destination, startDate, endDate, activities})
     }
 
