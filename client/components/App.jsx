@@ -1,8 +1,16 @@
 import React, {useState, useSelector} from 'react';
-import {createRoot} from 'react-dom'
+//import components 
+import Main from './Main.jsx';
 
 
-//render() here or in index.js???
+
+const App = () => {
+    
+    return (
+        <><h1>Travel Itinerary</h1>
+            <div id='mainApp'><Main /></div></>
+    )
+} 
 
 
-const root = createRoot(document.querySelector("#app"));
+export default App;
