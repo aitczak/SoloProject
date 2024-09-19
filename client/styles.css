@@ -1,55 +1,91 @@
 body {
-    background: rgb(153, 174, 153);
-    margin: 30px;
-   
+  background: rgb(153, 174, 153);
+  margin: 30px;
+}
+.mainpage {
+  align-items: center;
+  align-content: center;
 }
 
 h1 {
- color: rgb(37, 38, 38);
- font-family:Arial, Helvetica, sans-serif;
- margin: 30px;
+  color: rgb(37, 38, 38);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 40px;
+  align-self: center;
 }
-h2{
-    text-align: center;
-    color: grey;
-    
+h2 {
+  text-align: center;
+  color: rgb(87, 85, 85);
 }
 
 form {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-
-   
-   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  background-image: url("./istockphoto-1399021237-612x612.jpg");
+  padding: 50px;
 }
 
 input {
-    align-items: center;
-    min-height: 50px;
-    border-radius: 5px;
-    border: none;
-    margin: 2px;
-    padding: 5px;
-
+  align-items: center;
+  min-height: 50px;
+  border-radius: 5px;
+  border: none;
+  margin: 2px;
+  padding: 5px;
+  background-color: rgb(196, 203, 203);
 }
 
-#submit{
-    color:  rgb(44, 54, 44);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    margin:  20px 0
+#submit {
+  color: rgb(44, 54, 44);
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin: 20px 0;
+  background-color: rgb(153, 174, 153);
 }
 
 .seeIt {
-    background-color: rgb(228, 228, 238);
-    color:  rgb(44, 54, 44);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
+  background-color: rgb(228, 228, 238);
+  color: rgb(44, 54, 44);
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
 
+.itinList {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+.eachTrip {
+  margin: 10px;
+  background-color: rgb(225, 219, 219);
+  padding: 20px;
+  width: 300px;
+}
+
+.eachTrip h4 {
+  margin: 5px;
+  color: grey;
+}
+.eachTrip h6 {
+  margin: 5px;
+  color: grey;
+}
+
+.eachTrip p {
+  margin: 5px;
+  color: grey;
+}
+button {
+  background-color: rgb(153, 174, 153);
+  border: none;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 10px;
+  font-size: 16px;
 }

@@ -55,7 +55,7 @@ app.post("/api/itineraries", ItineraryController.createNew, (req, res) => {
 // });
 
 app.delete("/api/itineraries", ItineraryController.deleteOne, (req, res) => {
-  return res.status(200).send("Itinerary successfully deleted");
+  return res.status(200).json(res.locals.deleted);
 });
 
 app.use((req, res) =>

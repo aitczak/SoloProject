@@ -48,7 +48,7 @@ ItineraryController.createNew = async (req, res, next) => {
     //     Activities: activities,
     //   });
     // console.log('created new in DB', returnedItinerary)
-    
+
     return next();
   } catch (error) {
     return next({
@@ -57,14 +57,13 @@ ItineraryController.createNew = async (req, res, next) => {
   }
 };
 
-
 ItineraryController.getAll = async (req, res, next) => {
   //get array of objects itineraries
   try {
     console.log("in getall try");
     const allItineraries = await Itinerary.find();
     console.log("allitins", allItineraries);
-    res.locals.itineraries = allItineraries
+    res.locals.itineraries = allItineraries;
     return next();
   } catch (error) {
     return next({
@@ -77,8 +76,26 @@ ItineraryController.findOneAndUpdate = async (req, res, next) => {
   //updates one and returns it on res.locals.updatedTrip
 };
 
-ItineraryController.deleteOne = async (req, res, next) => {
+ItineraryController.deleteOne = (req, res, next) => {
   //delete, dont return anything
+  console.log("in controller", req.body);
+  const { Title } = req.body;
+
+  Itinerary.findOneAndDelete({ Title: Title })
+    .then((result) => {
+      console.log("findOneand Delete", result);
+      if (!result) {
+        return res.status(404).json({ message: "Itinerary  not found" });
+      }
+      res.locals.deleted = result;
+      return next();
+    })
+
+    .catch((error) => {
+      return next({
+        log: `deleteItinerary: error : ${error}`,
+      });
+    });
 };
 
 module.exports = ItineraryController;
