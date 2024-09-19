@@ -1,5 +1,5 @@
 //require model
-const db = require('./Models/Models.js')
+const db = require('../Models/Models.js')
 
 const ItineraryController = {};
 

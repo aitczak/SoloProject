@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
     Destination: String,
     StartDate: Date,
     EndDate: Date,
-    Activities: Text
+    Activities: String
   })
 
   const Itinerary = mongoose.model('Itinerary', itinerarySchema)

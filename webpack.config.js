@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
 const path = require('path')
  //webpack is a module bundler, runs through dependencies from one or more
  // entry points and then bundles everything you need(js,react,css,etc) into 
@@ -23,12 +24,26 @@ module.exports = {
     }),
   ],
   devServer: {
-    // static: {
-    //   directory: path.resolve(__dirname, "build"),
-    //   publicPath: "/build",
-    // },
+    headers: { "Access-Control-Allow-Origin": "*" },
+    static: {
+      directory: path.resolve(__dirname, "build"),
+      publicPath: "/build",
+    },
+    host: "localhost",
     port: 8080,
     //redirect to frontend server
+    proxy: [
+      {
+      context: ['/api'],
+        target: "http://localhost:3000",
+        secure: false,
+        changeOrigin: true,
+      },
+      // '/assets/**': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
+    ],
   },
   module: {
     rules: [
@@ -52,7 +67,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: [".js", ".jsx"],
+  },
   //proxy???
 };

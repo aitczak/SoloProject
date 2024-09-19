@@ -8,8 +8,9 @@ const Main = (props) => {
   const [tripCount, setcount] = useState(0);
 
   function createItinerary(Itinerary) {
-    fetch("localhost:3000/api/itineraries", {
+    fetch("api/itineraries", {
       method: "POST",
+      // mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Itinerary),
     })
@@ -20,9 +21,14 @@ const Main = (props) => {
 
   function handleclick(){
   console.log('hello click')
-    fetch('http://localhost:3000/api/itineraries')
-    .then(response => response.json)
-    .then(response => console.log(response))
+    fetch('/api/itineraries')
+    .then(response => {
+      if (!response.ok){
+        throw new Error('response was not ok')
+      }
+      response.json()
+    } )
+    .then(data => console.log(data))
     //  addtoPage(response))
     .catch(error=>{console.log(`error occurred while retrieving itineraries `)})
   }

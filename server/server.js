@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require("path");
 const ItineraryController = require("./Controllers/ItineraryController");
 const PORT = 3000;
+const db = require("./Models/Models.js");
 
 //define all routes here and send back to client side on res . locals
 //error handlers
@@ -57,7 +58,7 @@ app.post("/itineraries", ItineraryController.createNew, (req, res) => {
   //newtrip will be an object
 });
 
-app.update("/itineraries", ItineraryController.updateOne, (req, res) => {
+app.put("/itineraries", ItineraryController.updateOne, (req, res) => {
   return res.status(200).json(res.locals.updatedTrip);
 });
 
@@ -79,6 +80,10 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(port);
+connectMongo().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port: ${PORT}`);
+  });
+});
 
 module.exports = app;
