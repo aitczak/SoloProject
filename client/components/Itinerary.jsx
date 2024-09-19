@@ -1,15 +1,13 @@
 import React, {useState, useSelector} from "react";
 
 //gets a list of current itineraries = read 
-const Itinerary = ()=> {
+const Itinerary = ({getItineraries})=> {
 
-}
 
-function handleClick(e) {
-  e.preventDefault();
-  //redirect to
+
+
   return(
-  <button onclick={handleClick}>See Itinerary</button>
+  <button onClick={getItineraries}>See Itineraries</button>
   )
 }
 

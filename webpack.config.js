@@ -12,6 +12,24 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
   },
+
+  //need loaders- webpack only understands js and json, so need to convert others
+  mode: "development",
+  //what is this?
+  plugins: [
+    new HtmlWebpackPlugin({
+      // title: 'development',
+      template: "./index.html",
+    }),
+  ],
+  devServer: {
+    // static: {
+    //   directory: path.resolve(__dirname, "build"),
+    //   publicPath: "/build",
+    // },
+    port: 8080,
+    //redirect to frontend server
+  },
   module: {
     rules: [
       {
@@ -26,29 +44,15 @@ module.exports = {
         },
       },
       {
-        //install sass 
+        //install sass
         test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
-  //need loaders- webpack only understands js and json, so need to convert others
-  mode: "development",
-  //what is this?
-  plugins: [
-    new HtmlWebpackPlugin({
-        title: 'development',
-        template: 'index.html',
-    })
-  ],
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, "build"),
-      publicPath: "/build",
-    },
-    port: 8080,
-    //redirect to frontend server
-  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
   //proxy???
 };

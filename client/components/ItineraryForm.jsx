@@ -11,10 +11,10 @@ const ItineraryForm = ({addNewTrip, addCount }) =>{
     const [activities, setActivities] = useState("");
    
 
-    const handleFormSubmit= (e)=>{
+    const handleFormSubmit= async (e)=>{
         e.preventDefault();
         addCount();
-        addNewTrip({title, destination, startDate, endDate, activities})
+        await addNewTrip({title, destination, startDate, endDate, activities})
     }
 
 

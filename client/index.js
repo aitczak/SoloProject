@@ -1,5 +1,5 @@
 import React from "react";
-// import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 //import app - main react component
 import App from "./components/App.jsx"
@@ -10,6 +10,7 @@ import './styles.css'
 
 
 //link to
+
 const root = createRoot(document.getElementById("root"));
 root.render(
     <App/>

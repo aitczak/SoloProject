@@ -5,14 +5,37 @@ const ItineraryController = {};
 
 ItineraryController.createNew = async (req,res,next) =>{
     //destructure req.body = all the properties for new itinerary {}
-    const {Title, Destination, StartDate, EndDate, Activities} = req.body;
+    const {title, destination, startDate, endDate, activities} = req.body;
+    console.log(req.body)
     try {
-        db.create
+        await db.create({
+            title, destination, startDate, endDate, activities
+        })
+        
+       return next();
+    }
+    catch(error){
+        return next({
+            log: `${error} caught in createNew middleware`,
+        })
     }
 }
 
+
+
 ItineraryController.getAll = async (req, res, next) =>{
     //get array of objects itineraries 
+   try{ const allItineraries = await db.find({});
+    console.log('allitins', allItineraries);
+
+    return next();
+}
+catch(error){
+ return next({
+    log: `${error} occurred in getAll itineraries`
+ })
+}
+    
 }
 
 ItineraryController.updateOne= async (req,res,next)=>{

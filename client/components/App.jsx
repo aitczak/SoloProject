@@ -1,4 +1,4 @@
-import React, {useState, useSelector} from 'react';
+import React from 'react';
 //import components 
 import Main from './Main.jsx';
 

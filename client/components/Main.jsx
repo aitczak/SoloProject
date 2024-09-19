@@ -8,18 +8,33 @@ const Main = (props) => {
   const [tripCount, setcount] = useState(0);
 
   function createItinerary(Itinerary) {
-    fetch("/api/itineraries", {
+    fetch("localhost:3000/api/itineraries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Itinerary),
     })
       .then((response) => response.json())
-      .then((response) => setTrip([...trips, response]));
+      .then((response) => console.log('created'))
+    //   setTrip([...trips, response]));
   }
+
+  function handleclick(){
+  console.log('hello click')
+    fetch('http://localhost:3000/api/itineraries')
+    .then(response => response.json)
+    .then(response => console.log(response))
+    //  addtoPage(response))
+    .catch(error=>{console.log(`error occurred while retrieving itineraries `)})
+  }
+
+//   function addtoPage(data){
+//     const display=[];
+//     data
+//   }
 
   return (
     <div className="mainpage">
-      <Itinerary />
+      <Itinerary getItineraries={handleclick} />
       <ItineraryForm
         addNewTrip={createItinerary}
         addCount={()=>setcount(tripCount + 1)}
