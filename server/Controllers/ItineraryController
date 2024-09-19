@@ -1,50 +1,84 @@
 //require model
-const db = require('../Models/Models.js')
+const Itinerary = require("../Models/Models.js");
 
 const ItineraryController = {};
 
-ItineraryController.createNew = async (req,res,next) =>{
-    //destructure req.body = all the properties for new itinerary {}
-    const {title, destination, startDate, endDate, activities} = req.body;
-    console.log(req.body)
-    try {
-        await db.create({
-            title, destination, startDate, endDate, activities
-        })
-        
-       return next();
-    }
-    catch(error){
-        return next({
-            log: `${error} caught in createNew middleware`,
-        })
-    }
-}
+ItineraryController.createNew = async (req, res, next) => {
+  //destructure req.body = all the properties for new itinerary {}
+  const { Title, Destination, StartDate, EndDate, Activities } = req.body;
+  console.log("req.body", req.body);
+  console.log("Title", typeof Title);
 
+  // Itinerary.create({ Title, Destination, StartDate, EndDate, Activities })
+  //   .then((result) => {
+  //     res.locals.newItinerary = result;
+  //     console.log(result);
+  //     return next();
+  //   })
+  //   .catch((error) => {
+  //     return next({ log: `${error} caught in createNew middleware` });
+  //   });
 
+  //     .catch((error) => {
+  //       return next({
+  //         log: `createStudent: error : ${error}`,
+  //         message: { err: "error occurred in createStudent middleware" },
+  //         status: 500,
+  //       });
+  //     });
+  // },
 
-ItineraryController.getAll = async (req, res, next) =>{
-    //get array of objects itineraries 
-   try{ const allItineraries = await db.find({});
-    console.log('allitins', allItineraries);
-
-    return next();
-}
-catch(error){
- return next({
-    log: `${error} occurred in getAll itineraries`
- })
-}
+  try {
+    console.log("in try statement in createNew :");
+    const newItinerary = new Itinerary({
+      Title,
+      Destination,
+      StartDate,
+      EndDate,
+      Activities,
+    });
+    await newItinerary.save();
+    res.locals.newItinerary = newItinerary;
+    console.log("newItinerary saved :", newItinerary);
+    //  const returnedItinerary = await Itinerary.create({
+    //     Title: title,
+    //     Destination: destination,
+    //     StartDate: startDate,
+    //     EndDate: endDate,
+    //     Activities: activities,
+    //   });
+    // console.log('created new in DB', returnedItinerary)
     
-}
+    return next();
+  } catch (error) {
+    return next({
+      log: `${error} caught in createNew middleware`,
+    });
+  }
+};
 
-ItineraryController.updateOne= async (req,res,next)=>{
-    //updates one and returns it on res.locals.updatedTrip
-}
 
+ItineraryController.getAll = async (req, res, next) => {
+  //get array of objects itineraries
+  try {
+    console.log("in getall try");
+    const allItineraries = await Itinerary.find();
+    console.log("allitins", allItineraries);
+    res.locals.itineraries = allItineraries
+    return next();
+  } catch (error) {
+    return next({
+      log: `${error} occurred in getAll itineraries`,
+    });
+  }
+};
+
+ItineraryController.findOneAndUpdate = async (req, res, next) => {
+  //updates one and returns it on res.locals.updatedTrip
+};
 
 ItineraryController.deleteOne = async (req, res, next) => {
   //delete, dont return anything
 };
 
-module.exports = ItineraryController
+module.exports = ItineraryController;

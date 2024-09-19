@@ -12,9 +12,11 @@ const ItineraryForm = ({addNewTrip, addCount }) =>{
    
 
     const handleFormSubmit= async (e)=>{
+        const newItinerary = {Title: title, Destination: destination, StartDate: startDate, EndDate: endDate, Activities: activities}
+        console.log('newItinerary in handleFormSubmit: ', newItinerary);
         e.preventDefault();
         addCount();
-        await addNewTrip({title, destination, startDate, endDate, activities})
+        await addNewTrip(newItinerary);
     }
 
 
@@ -49,7 +51,7 @@ const ItineraryForm = ({addNewTrip, addCount }) =>{
           value={activities} 
           onChange={(e)=> setActivities(e.target.value)}
           ></input>
-          <button type="submit">Create New Itinerary</button>
+          <button id='submit' type="submit">Create New Itinerary</button>
         </form>
       </div>
     );

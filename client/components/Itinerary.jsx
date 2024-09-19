@@ -7,7 +7,10 @@ const Itinerary = ({getItineraries})=> {
 
 
   return(
-  <button onClick={getItineraries}>See Itineraries</button>
+    <>
+  <button className='seeIt' onClick={getItineraries}>See Itineraries</button>
+  <div id ="forList"></div>
+  </>
   )
 }
 

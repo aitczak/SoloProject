@@ -1,0 +1,55 @@
+body {
+    background: rgb(153, 174, 153);
+    margin: 30px;
+   
+}
+
+h1 {
+ color: rgb(37, 38, 38);
+ font-family:Arial, Helvetica, sans-serif;
+ margin: 30px;
+}
+h2{
+    text-align: center;
+    color: grey;
+    
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+
+   
+   
+}
+
+input {
+    align-items: center;
+    min-height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 2px;
+    padding: 5px;
+
+}
+
+#submit{
+    color:  rgb(44, 54, 44);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin:  20px 0
+}
+
+.seeIt {
+    background-color: rgb(228, 228, 238);
+    color:  rgb(44, 54, 44);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+
+}

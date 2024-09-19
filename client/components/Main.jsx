@@ -8,44 +8,48 @@ const Main = (props) => {
   const [tripCount, setcount] = useState(0);
 
   function createItinerary(Itinerary) {
-    fetch("api/itineraries", {
+    fetch("http://localhost:3000/api/itineraries", {
       method: "POST",
       // mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Itinerary),
     })
       .then((response) => response.json())
-      .then((response) => console.log('created'))
-    //   setTrip([...trips, response]));
+      .then((response) => console.log("created, response: ", response))
+      //   setTrip([...trips, response]));
+      .catch((error) => {
+        console.log(`Error caught, ${error}`);
+      });
   }
 
-  function handleclick(){
-  console.log('hello click')
-    fetch('/api/itineraries')
-    .then(response => {
-      if (!response.ok){
-        throw new Error('response was not ok')
-      }
-      response.json()
-    } )
-    .then(data => console.log(data))
-    //  addtoPage(response))
-    .catch(error=>{console.log(`error occurred while retrieving itineraries `)})
+  function addToPage(data) {
+    console.log(data);
   }
 
-//   function addtoPage(data){
-//     const display=[];
-//     data
-//   }
+  function handleclick() {
+    console.log("hello click");
+    fetch("http://localhost:3000/api/itineraries")
+      .then((response) => {
+        // if (!response.ok){
+        //   throw new Error('response was not ok')
+        // }
+        return response.json();
+      })
+      .then((response) => addToPage(response))
+
+      .catch((error) => {
+        console.log(`error occurred while retrieving itineraries `);
+      });
+  }
 
   return (
     <div className="mainpage">
-      <Itinerary getItineraries={handleclick} />
       <ItineraryForm
         addNewTrip={createItinerary}
-        addCount={()=>setcount(tripCount + 1)}
+        addCount={() => setcount(tripCount + 1)}
       />
       <h3 className="count">Itineraries: {tripCount}</h3>
+      <Itinerary getItineraries={handleclick} />
     </div>
   );
 };

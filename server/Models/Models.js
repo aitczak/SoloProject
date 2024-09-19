@@ -1,21 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // const { default: Itinerary } = require('../../client/components/Itinerary');
 
+// const Schema = mongoose.Schema;
 
+const itinerarySchema = new mongoose.Schema({
+  Title: { type: String },
+  Destination: { type: String },
+  StartDate: { type: String },
+  EndDate: { type: String },
+  Activities: { type: String },
+});
 
-  const Schema = mongoose.Schema;
+const Itinerary = mongoose.model("Itineraries", itinerarySchema);
 
-  const itinerarySchema = new Schema({
-    Title: String,
-    Destination: String,
-    StartDate: Date,
-    EndDate: Date,
-    Activities: String
-  })
-
-  const Itinerary = mongoose.model('Itinerary', itinerarySchema)
-
-
-  module.exports ={
-    Itinerary
-  }
+module.exports = Itinerary;

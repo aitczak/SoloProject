@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
-const path = require('path')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  //webpack is a module bundler, runs through dependencies from one or more
  // entry points and then bundles everything you need(js,react,css,etc) into 
  //a budles file which is static assets to serve your content
@@ -19,31 +20,33 @@ module.exports = {
   //what is this?
   plugins: [
     new HtmlWebpackPlugin({
-      // title: 'development',
+      title: "development",
       template: "./index.html",
     }),
+    
   ],
   devServer: {
-    headers: { "Access-Control-Allow-Origin": "*" },
+    // headers: { "Access-Control-Allow-Origin": "*" },
     static: {
       directory: path.resolve(__dirname, "build"),
       publicPath: "/build",
     },
-    host: "localhost",
+    // host: "localhost",
+    hot: true,
     port: 8080,
-    //redirect to frontend server
-    proxy: [
-      {
-      context: ['/api'],
-        target: "http://localhost:3000",
-        secure: false,
-        changeOrigin: true,
-      },
+    // redirect to frontend server
+    // proxy: [
+    //   {
+        // context: ["/api"],
+        // target: "http://localhost:3000",
+        // secure: false,
+        // changeOrigin: true,
+      // },
       // '/assets/**': {
       //   target: 'http://localhost:3000/',
       //   secure: false,
       // },
-    ],
+    // ],
   },
   module: {
     rules: [
@@ -53,21 +56,21 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [["@babel/preset-env"], ["@babel/preset-react"]],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
             //preset env supports es 2015, and  preset react transforms react jsx into js
           },
         },
       },
       {
         //install sass
-        test: /\.s[ac]ss$/i,
+        test: /\.css$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
+
   resolve: {
     extensions: [".js", ".jsx"],
   },
-  //proxy???
 };

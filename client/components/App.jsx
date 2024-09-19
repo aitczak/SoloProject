@@ -1,6 +1,7 @@
 import React from 'react';
 //import components 
 import Main from './Main.jsx';
+import "../styles.css";
 
 
 
@@ -8,7 +9,7 @@ import Main from './Main.jsx';
 const App = () => {
     
     return (
-        <><h1>Travel Itinerary</h1>
+        <><h1>Travel Itinerary Creator</h1>
             <div id='mainApp'><Main /></div></>
     )
 } 
